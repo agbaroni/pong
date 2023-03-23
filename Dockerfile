@@ -6,4 +6,6 @@ COPY main.go .
 
 RUN go build
 
+USER 1000
+
 ENTRYPOINT [ "app" ]
