@@ -9,7 +9,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
-		reqDump, err := httputil.DumpRequest(req, true)
+		reqDump, err := httputil.DumpRequest(r, true)
 
 		if err != nil {
         		log.Print(err)
