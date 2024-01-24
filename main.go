@@ -3,7 +3,7 @@ package main
 import (
 	"io"
 	"net/http"
-	"net/http/util"
+	"net/http/httputil"
 	"log"
 )
 
