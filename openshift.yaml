@@ -1,3 +1,4 @@
+---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -11,3 +12,19 @@ spec:
   selector:
     matchLabels:
       app: pong
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: pong
+spec:
+  groups:
+  - name: pong
+    rules:
+    - alert: VersionAlert 
+      for: 1m
+      expr: my_counter{job="pong"} >= 50
+      labels:
+        severity: warning
+      annotations:
+        message: PONG overcomes 50.
