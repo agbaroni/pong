@@ -5,7 +5,7 @@ metadata:
 spec:
   endpoints:
   - interval: 5s
-    port: 5050
+    port: web
     scheme: http
     path: /metrics
   selector:
