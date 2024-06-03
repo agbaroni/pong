@@ -22,6 +22,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: pong
   name: pong
 spec:
   selector:

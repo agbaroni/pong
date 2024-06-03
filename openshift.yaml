@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: pong
+spec:
+  endpoints:
+  - interval: 5s
+    port: 5050
+    scheme: http
+    path: /metrics
+  selector:
+    matchLabels:
+      app: pong
