@@ -1,0 +1,19 @@
+apiVersion: shipwright.io/v1beta1
+kind: Build
+metadata:
+  name: pong
+  namespace: pang
+spec:
+  output:
+    image: pong:latest
+  retention:
+    failedLimit: 5
+    succeededLimit: 3
+    ttlAfterFailed: 15m
+    ttlAfterSucceeded: 30m
+  source:
+    git:
+      url: https://github.com/agbaroni/pong
+  strategy:
+    name: buildah
+    kind: ClusterBuildStrategy
