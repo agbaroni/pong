@@ -5,7 +5,7 @@ metadata:
   namespace: pang
 spec:
   output:
-    image: pong:latest
+    image: image-registry.openshift-image-registry.svc.cluster.local:5000/pang/pong:latest
   retention:
     failedLimit: 5
     succeededLimit: 3
