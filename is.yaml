@@ -1,0 +1,14 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: pong
+  namespace: pang
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - importPolicy:
+        insecure: true
+      name: latest
+      referencePolicy:
+        type: Source
