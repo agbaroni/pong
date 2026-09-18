@@ -1,12 +1,13 @@
 package main
 
 import (
-	"io"
-	"net/http"
-	"net/http/httputil"
-	"log"
+	"encoding/json"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"io"
+	"log"
+	"net/http"
+	"net/http/httputil"
 )
 
 type metrics struct {
@@ -30,12 +31,12 @@ func main() {
 	reg := prometheus.NewRegistry()
 	m := NewMetrics(reg)
 
-	http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		reqDump, err := httputil.DumpRequest(r, true)
 
 		if err != nil {
-        		log.Print(err)
-    		} else {
+			log.Print(err)
+		} else {
 			log.Print(string(reqDump))
 
 			w.WriteHeader(http.StatusOK)
@@ -43,12 +44,13 @@ func main() {
 			w.Header().Set("Content-Type", "text/plain")
 
 			_, err := io.WriteString(w, "PING\n")
+			log.Printf()
 
 			if err != nil {
 				log.Print(err)
 			}
 
-			m.n.With(prometheus.Labels{"n":"PING"}).Inc()
+			m.n.With(prometheus.Labels{"n": "PING"}).Inc()
 		}
 	})
 
