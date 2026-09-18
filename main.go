@@ -1,13 +1,13 @@
 package main
 
 import (
-	"encoding/json"
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"io"
 	"log"
 	"net/http"
 	"net/http/httputil"
+
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 type metrics struct {
@@ -44,7 +44,6 @@ func main() {
 			w.Header().Set("Content-Type", "text/plain")
 
 			_, err := io.WriteString(w, "PING\n")
-			log.Printf()
 
 			if err != nil {
 				log.Print(err)
